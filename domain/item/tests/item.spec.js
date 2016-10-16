@@ -18,15 +18,15 @@ describe('ItemAggregate', function() {
           given(),
           when({
               command: 'createItem',
-              aggId: 'testId',
               payload:{
+                id: '123',
                 text: 'ola mundo'
               }
           }),
           then({
               event: 'itemCreated',
               payload:{
-                itemId: 'testId',
+                id: '123',
                 text: 'ola mundo'
               }
           })
@@ -52,13 +52,13 @@ describe('ItemAggregate', function() {
           given({
               event: 'itemCreated',
               payload:{
-                itemId: 'testId',
+                id: '123',
                 text: 'ola mundo'
               }
           }),
           when({
               command: 'changeItem',
-              aggId: 'testId',
+              aggId: '123',
               payload:{
                 text: 'ola mundo2'
               }
@@ -66,7 +66,7 @@ describe('ItemAggregate', function() {
           then({
               event: 'itemChanged',
               payload:{
-                itemId: 'testId',
+                id: '123',
                 text: 'ola mundo2'
               }
           })

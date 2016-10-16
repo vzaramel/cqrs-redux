@@ -10,6 +10,5 @@ const Errors = {
   }
 }
 inherits(Errors.ItemNaoExisteError,Error);
-// Object.keys(Errors).forEach((error) => inherits(Errors[error],Error));
 
 export default Errors;

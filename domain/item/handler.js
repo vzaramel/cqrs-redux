@@ -15,7 +15,7 @@ const handle = (item, cmd) => {
 export default {
   createItem: handle,
   changeItem: (item, cmd) => {
-    if( _.isNil(item.itemId))
+    if( _.isNil(item.id))
     {
       throw new errors.ItemNaoExisteError();
     }
@@ -23,7 +23,7 @@ export default {
   },
   deleteItem: (item, cmd) =>{
     console.log(item);
-    if( _.isNil(item.itemId))
+    if( _.isNil(item.id))
     {
       throw new errors.ItemNaoExisteError();
     }

@@ -6,15 +6,20 @@ const initialState = {
 export default (state = initialState, evt) => {
   switch (evt.event){
     case 'itemCreated':
-      // console.log(evt);
-      const { itemId, text } = evt.payload;
+      const { id, text } = evt.payload;
       return {
-          ...state,itemId,text
+          ...state,id,text
       };
     case 'itemChanged':
-      return state.map( item => item.text = evt.text);
+      return {
+        ...state,
+        text : evt.text
+      };//state.map( item => item.text = evt.text);
     case 'itemDeleted':
-      return state.map( item => item._destroy = true);
+      return {
+        ...state,
+        _destroy: true
+      }
     default:
       return state;
   }

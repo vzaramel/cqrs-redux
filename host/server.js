@@ -2,7 +2,6 @@
 // `node server.js`
 var express = require('express')
   , colors = require('colors')
-  // , handler = require('./app/eventDenormalizer')
   , uuid = require('node-uuid')
   , app = express()
   , http = require('http')
@@ -28,12 +27,8 @@ console.log('\nBOOTSTRAPPING:'.cyan);
 
 const es = eventstore();
 es.useEventPublisher( evt => {
-    try{
-    // var msg = JSON.stringify(evt, null, 4);
       console.log(colors.green('\npublishing event'));
-      // console.log(store);
       store.dispatch({ type : evt.event, payload : evt});
-    }catch(e){console.log(e)}
 });
 es.init();
 const sendCommand = dispatcher.setup(es, [items]);
@@ -41,10 +36,7 @@ const sendCommand = dispatcher.setup(es, [items]);
 console.log('1. -> routes'.cyan);
 require('./app/routes').setup(sendCommand,store)(app);
 
-// console.log('2. -> message hub'.cyan);
-// const hub = require('./app/hub');
-
 // START LISTENING
 var port = 3000;
 console.log(colors.cyan('\nStarting server on port ' + port));
-server.listen(3000);
+server.listen(port);
