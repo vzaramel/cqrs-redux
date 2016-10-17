@@ -20,12 +20,14 @@ export default function reducer(state = {items : {}}, action) {
         },
       };
     case 'itemDeleted':
-      const newState ={
-        ...state
+      const newItems = {
+        ...state.items
       };
-      delete newState.items[action.payload.aggId];
-      console.log(newState);
-      return newState;
+      delete newItems[action.payload.aggId];
+      return {
+        ...state,
+        items: newItems
+      };
     default:
       return state;
   }
