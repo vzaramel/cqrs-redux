@@ -39,15 +39,12 @@ exports.setup = (sendCommand, store) => {
         });
     });
     app.get('/items/:id', (req, res) => {
-        const items =
-          store.getState()
-          .items
-          .filter( (item) => item.itemId === req.params.id );
-        if ( items.length === 0)
+        const item = store.getState().items[req.params.id];
+        if ( !item )
           res.status(404)        // HTTP status 404: NotFound
               .send('Not found');
         else
-          res.json(items[0]);
+          res.json(item);
     });
     app.put('/items/:id', function(req, res) {
         console.log(req.body);
