@@ -20,14 +20,14 @@ describe('ItemAggregate', function() {
               command: 'createItem',
               payload:{
                 id: '123',
-                text: 'ola mundo'
+                text: 'hello'
               }
           }),
           then({
               event: 'itemCreated',
               payload:{
                 id: '123',
-                text: 'ola mundo'
+                text: 'hello'
               }
           })
         )
@@ -40,34 +40,34 @@ describe('ItemAggregate', function() {
               command: 'changeItem',
               aggId: 'testId',
               payload:{
-                text: 'ola mundo'
+                text: 'hello'
               }
           }),
-          thenFailWith(new errors.ItemNaoExisteError())
+          thenFailWith(new errors.ItemDoesNoteExists())
         )
     });
 
-    it('Modificar Item existente deveria retornar Item Changed event', function() {
+    it('Change Item text shoul return ItemChanged Event', function() {
         Test(
           given({
               event: 'itemCreated',
               payload:{
                 id: '123',
-                text: 'ola mundo'
+                text: 'hello'
               }
           }),
           when({
               command: 'changeItem',
               aggId: '123',
               payload:{
-                text: 'ola mundo2'
+                text: 'hello World'
               }
           }),
           then({
               event: 'itemChanged',
               payload:{
                 id: '123',
-                text: 'ola mundo2'
+                text: 'hello World'
               }
           })
         )

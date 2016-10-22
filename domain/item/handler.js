@@ -17,7 +17,7 @@ export default {
   changeItem: (item, cmd) => {
     if( _.isNil(item.id))
     {
-      throw new errors.ItemNaoExisteError();
+      throw new errors.ItemDoesNoteExists();
     }
     return handle(item,cmd);
   },
@@ -25,7 +25,7 @@ export default {
     console.log(item);
     if( _.isNil(item.id))
     {
-      throw new errors.ItemNaoExisteError();
+      throw new errors.ItemDoesNoteExists();
     }
     return handle(item,cmd);
   }
