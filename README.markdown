@@ -12,9 +12,13 @@ npm start
 
 ### Write side
 
-Using the DDD approach each module should live in a folder inside the domain folder.
-Each modules has handlers (mappers) which apply functions like ( aggregateRoot, command) -> [events]
-Each modules has reducers which are used to reconstruct the state of the aggregate base on the event stream
+Each module (Bounded Context) should live in a folder inside the domain folder.
+
+Each modules has handlers (mappers) which apply functions like.
+
+( aggregateRoot, command) -> [events]
+
+Each modules has reducers which are used to reconstruct the state of the aggregate base on their event stream
 
 ### Read side
 
